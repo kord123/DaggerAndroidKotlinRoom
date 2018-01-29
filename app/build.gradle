@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+        applicationId "com.myapp"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "com.android.support:support-v4:$supportLibraryVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+
+    implementation "android.arch.lifecycle:extensions:1.0.0"
+    kapt "android.arch.lifecycle:compiler:1.0.0"
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    kapt "android.arch.persistence.room:compiler:1.0.0"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
+}
